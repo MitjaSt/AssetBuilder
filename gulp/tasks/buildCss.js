@@ -17,6 +17,7 @@ var sass        = require( 'gulp-ruby-sass' );
 var sourcemaps  = require( 'gulp-sourcemaps' );
 
 var autoprefixer = require( 'gulp-autoprefixer' );
+var cssnano      = require( 'gulp-cssnano' );
 
 
 /* Browserify nicer errors */
@@ -34,15 +35,25 @@ module.exports = function()
   {
     var Sass = sass( Config.css.app );
     Sass = Sass.pipe( autoprefixer( 'last 2 version' ) );
+    Sass = Sass.pipe( cssnano() );
 
     Sass = Sass.pipe( gulp.dest( Config.css.output.substring( 0, Config.js.output.lastIndexOf( '/' ) ) + '/' ) );
     Sass = Sass.pipe( rename( { suffix: '.min' } ) );
-    Sass = Sass.on( 'error', sass.logError );
+
+    /*
+    // Check if this works
+    Sass = Sass.on( 'error', function()
+    {
+      console.log( 'SUP')
+      gutil.log( chalk.red( 'Error' ) + chalk.white( sass.logError ) );
+    } );
+    */
+
     // Sass = Sass.pipe( gulp.dest( Config.css.output.substring( 0, Config.js.output.lastIndexOf( '/' ) ) + '/' ) );
+
     Sass = Sass.pipe( gulp.dest( Config.css.output.substring( 0, Config.js.output.lastIndexOf( '/' ) ) + '/' ) );
 
     gutil.log( chalk.green( '[CSS] SUCCESS' ) + ': ' + chalk.yellow( Config.css.app ) );
 
   } );
 };
-  

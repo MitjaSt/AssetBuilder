@@ -116,3 +116,9 @@ gulp.task( 'default', function ()
 
 // Exit gulp process
 // process.exit( 1 );
+
+
+// Other resources
+// ---------------
+
+// Sample gulp build script - http://weaintplastic.github.io/web-development-field-guide/Development/Frontend_Development/Setting_up_your_project/Setup_Build_System/A_complex_Gulp_build_script.html
