@@ -32,7 +32,7 @@
       packageCache: {},
       debug: false, 
       poll: true, 
-      fullPaths : true, 
+      fullPaths : false, 
       compress: true
     };
 
