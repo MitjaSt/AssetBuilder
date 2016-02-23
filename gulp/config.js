@@ -12,7 +12,7 @@
   // Javascript
   Config.js = {
     libs: [],
-    app: './src/js/app.jsx', // Path (string)
+    app: './src/js/app.js', // Path (string)
     output: './src/dist/app-dist.min.js'
   };
 
