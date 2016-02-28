@@ -49,69 +49,33 @@ require( './gulp/tasks/watchJs.js' )();
 // Start watching JS and CSS files for changes
 require( './gulp/tasks/watchJSAndCss.js' )();
 
-//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//  !! MISSING BUILD JS LIBRARIES !!
-//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Information on how to use this script
+require( './gulp/tasks/info.js' )();
 
-// Default task (ran by "gulp default" or just "gulp") explains its functionality and usage
-gulp.task( 'default', function ()
+//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//  !! MISSING BUILD & CSS JS LIBRARIES !!
+//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// Default task, runs watchify on both JS and CSS
+gulp.task('default', [ 'watchJsAndCss' ], function()
 {
-  // Chalk color options
-  // *********************
+  var message = '';
 
-  // Background colors
-  // bgBlack bgRed bgGreen bgYellow bgBlue bgMagenta bgCyan bgWhite
-
-  // Text colors
-  // black red green yellow blue magenta cyan whitegray
-
-  var message = "\r\n\r\n";
-
-  // Info header
-  message += '   ' + chalk.white( chalk.bgMagenta( '                                     ' ) );
-  message += "\r\n";
-  message += '   ' + chalk.white( chalk.bgMagenta( ' *** How to use this gulp script *** ' ) );
-  message += "\r\n";
-  message += '   ' + chalk.white( chalk.bgMagenta( '                                     ' ) );
-
-  message += "\r\n\r\n";
-
-  message += '   Options:';
   message += "\r\n";
   message += "\r\n";
 
-  message += chalk.green( '     buildCss' );
-  message += '       - Run "gulp buildCss" to compile sCSS->CSS [from file: ' + Config.css.app + ']';
+  message += ' Type "' + chalk.green( 'gulp info' ) + '" ';
+  message += 'for information on how to use this script.';
   message += "\r\n";
   message += "\r\n";
 
-  message += chalk.green( '     buildJs' );
-  message += '        - Run "gulp buildJs" to compile JS [from file: ' + Config.js.app + ']';
-  message += "\r\n";
-  message += "\r\n";
-
-  message += chalk.green( '     watchCss' );
-  message += '       - Run "gulp watchCss" to enable Watchify (auto-runs buildCss on (s)CSS file changes)';
-  message += "\r\n";
-  message += "\r\n";
-
-  message += chalk.green( '     watchJs' );
-  message += '        - Run "gulp watchJs" to enable Watchify (auto-runs buildJs on Js file changes)';
-  message += "\r\n";
-  message += "\r\n";
-
-  message += chalk.green( '     watchJSAndCss' );
-  message += '  - Run "gulp watchJSAndCss" to enable auto-build for both CSS and JS (recompiles both on any CSS or JS file change)';
-  message += "\r\n";
-  message += "\r\n";
-
+  message += ' As no specific task was set, it defaulted on "' +  chalk.red( 'gulp watchJsAndCss' ) + '"';
 
   message += "\r\n";
   message += "\r\n";
 
   console.log( message );
 } );
-
 
 
 // Exit gulp process

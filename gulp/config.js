@@ -9,30 +9,46 @@
 
   Config.developmentMode = true;
 
+  Config.basePath = './src/';
+
   // Javascript
   Config.js = {
-    libs: [],
-    app: './src/js/app.js', // Path (string)
-    output: './src/dist/app-dist.min.js'
+
+    // Libraries/dependancies
+    libs    : [],
+
+    // App main script
+    app     : Config.basePath + 'js/app.js', 
+
+    // Compiled&minified distribution script
+    output  : Config.basePath + 'dist/js/app-dist.min.js' 
   };
 
   // CSS
   Config.css = {
+
+    // Libraries/dependancies
     libs  : {
-      // jQuery ...
+      // (s)CSS ...
     },
-    app    : './src/css/main.scss',
-    output : './src/dist/css-dist.css'
+
+    // App main SCSS file
+    app    : Config.basePath + 'css/main.scss',
+
+    // Compiled&minified CSS file
+    output : Config.basePath + 'dist/css/css-dist.css'
   };
 
+
+  // Watchify looks for file changes and updates on the "fly"
   Config.watchify = {};
 
     Config.watchify.args = {
       cache: {},
       packageCache: {},
-      debug: false, 
-      poll: true, 
-      fullPaths : false, 
+      debug: false,
+      poll: true,
+      fullPaths : false,
       compress: true
     };
 
